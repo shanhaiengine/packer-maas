@@ -20,7 +20,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 export LANG=C
 
-KERNEL=${KERNEL:-linux-image-generic}
+KERNEL=${KERNEL:-linux-image-5.15.0-1029-nvidia}
 ARCH=amd64
 
 PACKAGES=$(apt-cache depends --recurse --no-recommends --no-suggests \

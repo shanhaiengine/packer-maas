@@ -26,7 +26,7 @@ rm /var/cache/debconf/config.dat
 dpkg --configure -a
 
 # Ensure the existence of linux-image-generic for non-cloudimg images.
-apt-get -y install linux-image-generic
+apt-get -y install linux-image-5.15.0-1029-nvidia
 
 grub-install \
     --target=x86_64-efi \
