@@ -53,6 +53,7 @@ custom-cloudimg.tar.gz: check-deps clean
 custom-ubuntu.tar.gz: check-deps clean seeds-flat.iso OVMF_VARS.fd \
 			packages/custom-packages.tar.gz
 	${PACKER} init . && ${PACKER} build -only=qemu.flat \
+	    -var kernel=linux-image-5.15.0-1029-nvidia \
 		-var ubuntu_series=${SERIES} \
 		-var ubuntu_iso=${ISO} \
 		-var architecture=${ARCH} \
