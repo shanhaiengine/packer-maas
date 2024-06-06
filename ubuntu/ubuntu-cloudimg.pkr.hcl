@@ -107,6 +107,12 @@ build {
     scripts          = ["${path.root}/scripts/cloudimg/setup-curtin.sh"]
   }
 
+  # 安装自定义包
+  provisioner "shell" {
+    environment_vars = ["DEBIAN_FRONTEND=noninteractive"]
+    scripts          = ["${path.root}/scripts/cloudimg/install-custom-packages.sh"]
+  }
+
   provisioner "shell" {
     environment_vars = ["DEBIAN_FRONTEND=noninteractive"]
     scripts          = ["${path.root}/scripts/cloudimg/cleanup.sh"]
