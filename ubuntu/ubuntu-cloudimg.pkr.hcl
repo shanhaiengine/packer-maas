@@ -107,7 +107,7 @@ build {
   provisioner "file" {
     destination = "/tmp/custom-packages/"
     sources     = [
-      "${path.root}/packages/*.deb"
+      "${path.root}/custom-packages/"
     ]
   }
 
