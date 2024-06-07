@@ -99,7 +99,16 @@ build {
 
   provisioner "file" {
     destination = "/tmp/"
-    sources     = ["${path.root}/scripts/cloudimg/curtin-hooks"]
+    sources     = [
+      "${path.root}/scripts/cloudimg/curtin-hooks"
+    ]
+  }
+
+  provisioner "file" {
+    destination = "/tmp/custom-packages/"
+    sources     = [
+      "${path.root}/packages/*.deb"
+    ]
   }
 
   provisioner "shell" {
