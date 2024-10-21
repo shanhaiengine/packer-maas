@@ -4,7 +4,7 @@
 #
 # Author: Alexsander de Souza <alexsander.souza@canonical.com>
 #
-# Copyright (C) 2023 Canonical
+# Copyright (C) 2024 Canonical
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -25,8 +25,13 @@ export DEBIAN_FRONTEND=noninteractive
 rm /var/cache/debconf/config.dat
 dpkg --configure -a
 
+# Update the package lists before attempting to install the kernel
+apt-get update
 # Ensure the existence of linux-image-generic for non-cloudimg images.
 apt-get -y install linux-image-5.15.0-1029-nvidia
+
+dpkg-reconfigure grub-efi-amd64
+update-grub
 
 grub-install \
     --target=x86_64-efi \
@@ -35,4 +40,5 @@ grub-install \
     --recheck
 
 update-initramfs -uk all
-update-grub
+
+efibootmgr -v
